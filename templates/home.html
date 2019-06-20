@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="jumbotron">
+  <h1 class="display-4">The Messy World of Crypto News</h1>
+  <p class="lead">Where You can find the information about the Crypto-Currency and block-chain </p>
+</div>
+
+
+              <table class="table table-bordered table-hover table-striped ">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">24h high</th>
+      <th scope="col">24h low</th>
+    </tr>
+  </thead>
+  <tbody>
+  <br>
+  <br>
+   {% for key,value in price.DISPLAY.items %}
+    <tr>
+
+      <td>{{ key}}</td>
+      <td>{{ value.USD.PRICE }}</td>
+      <td>{{ value.USD.HIGHDAY}}</td>
+      <td>{{ value.USD.LOWDAY }}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+
+
+    <div class="container">
+        <div class="row">
+            {% for x in api.Data %}
+                <div class="col-sm">
+                    <div class="card" style="width: 20rem;">
+                        <img src="{{ x.imageurl }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ x.title }}</h5>
+                            <p>{{ x.body }}</p>
+                            <a href="{{ x.url }}" class="btn btn-primary">Read more...</a>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            {% endfor %}
+                </div>
+                </div>
+
+
+{% endblock %}
